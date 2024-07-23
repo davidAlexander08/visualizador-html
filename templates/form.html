@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit File Path</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 400px;
+            padding: 10px;
+            margin-right: 10px;
+            display: block;
+            margin: 10px auto;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter the File Path</h1>
+        <form action="/view" method="get">
+            <input type="text" name="file_path" placeholder="Enter the file path" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

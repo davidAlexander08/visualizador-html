@@ -1,0 +1,8 @@
+pandas
+plotly
+python-dotenv
+waitress
+requests
+jinja2
+fastapi
+uvicorn
