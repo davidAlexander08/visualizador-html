@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import os
+import uvicorn
 
 app = FastAPI()
 
@@ -14,14 +15,12 @@ async def form_page(request: Request):
 
 @app.get("/view", response_class=HTMLResponse)
 async def view_html(file_path: str = Query(..., description="Path to the HTML file")):
-    # Sanitize the file_path to avoid directory traversal attacks
-    #file_path = os.path.normpath(file_path)  # Normalize the path
-    print(f"Received file_path: {file_path}")
-    # Check if the file exists
     if not os.path.isfile(file_path):
-        raise HTTPException(status_code=404, detail="File not found")
+        raise HTTPException(status_code=404, detail="Arquivo nao encontrado, provavelmente foi fornecido o caminho errado")
 
-    # Read and return the file content
     with open(file_path, "r") as file:
         return HTMLResponse(content=file.read(), status_code=200)
     
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, log_level="info")
